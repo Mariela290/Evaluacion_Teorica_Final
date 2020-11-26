@@ -2,6 +2,7 @@ package com.example.evaluacion_teorica_final;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
@@ -15,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     SoundPool sp;
     int sonido_de_Reproduccion;
 
+    Button btn1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +27,15 @@ public class MainActivity extends AppCompatActivity {
         sp = new SoundPool( 1, AudioManager.STREAM_MUSIC, 1);
 
         sonido_de_Reproduccion = sp.load(this, R.raw.sound_short, 1);
+
+        btn1 = findViewById(R.id.btn1);
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent =  new Intent(getApplicationContext(), VideoView.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public void AudioSoundPool (View view){
